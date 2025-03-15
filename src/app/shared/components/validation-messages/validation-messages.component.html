@@ -1,0 +1,57 @@
+@if(control.errors && (control.touched || control.dirty) && !(control.get('rePassword')) ) {
+<div class="alert alert-danger">
+
+
+  <div>
+    @if (control.getError('required')) {
+    Input is Required
+    }
+    @if(control.getError("minlength")) {
+    Name must be at least 3 characters
+    }
+    @if (control.getError("maxlength")) {
+    Name must be maximum 20 characters
+    }
+    @if (control.getError("invalidEmail")) {
+    Invalid email (ex. example{{'@'}}example.com)
+    }
+    @if (control.getError("pattern")) {
+    <div>
+      <span class="font-medium">Ensure that these requirements are met:</span>
+      <ul class="mt-1.5 list-disc list-inside">
+        <li>At least 8 characters</li>
+        <li>At least one lowercase and one uppercase character</li>
+        <li>Inclusion of at least one special character and one number</li>
+      </ul>
+    </div>
+    }
+    @if (control.getError('invalidDate')) {
+    Invalid Date (ex. 02/11/2015)
+    }
+    @if (control.getError('unrealisticDate')) {
+    Unrealistic Date (ex. 30/13/2022)
+    }
+
+  </div>
+</div>
+}
+
+
+@if (control.getError('mismatch') && (control.get('rePassword')?.touched || control.get('rePassword')?.dirty) &&
+(control.get('rePassword'))) {
+
+
+
+  <div class="alert alert-danger text-capitalize">
+    @if (control.getError('mismatch')) {
+    password mismatch
+    }
+
+
+  </div>
+
+
+
+
+
+}

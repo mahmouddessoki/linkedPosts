@@ -1,0 +1,5 @@
+<div class="posts">
+  @for (post of posts; track post._id) {
+  <app-post-card [post]="post" />
+  }
+</div>

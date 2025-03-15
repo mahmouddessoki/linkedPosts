@@ -1,0 +1,33 @@
+<div class="post mt-3 bg-white p-4 rounded-3">
+  <div class="post-header d-flex justify-content-between">
+    <div class="post-bio d-flex gap-2 align-items-center">
+      <img src="/imgs/profile (1).png" class="align-self-start" alt="">
+      <div class="post-userName">
+        <h6 class="mb-1">{{post.user.name}}</h6>
+        <p class="m-0">{{post.createdAt}}</p>
+      </div>
+    </div>
+    <div class="post-setting">
+      <svg width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+        <path
+          d="M8 256a56 56 0 1 1 112 0A56 56 0 1 1 8 256zm160 0a56 56 0 1 1 112 0 56 56 0 1 1 -112 0zm216-56a56 56 0 1 1 0 112 56 56 0 1 1 0-112z" />
+      </svg>
+    </div>
+  </div>
+
+  <div class="post-content mt-3">
+    <p class="text-muted fw-medium text-capitalize">
+      {{post.body}}
+    </p>
+    <div class="post-media">
+      <img [src]="post.image" class="w-100 rounded-3" alt="">
+      <div class="show-comments mt-1">
+        <a href="#" class="text-decoration-none text-capitalize main-color">show comments</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-comments mt-1 py-3  ">
+    <app-post-comments [postId]="post._id" />
+  </div>
+</div>

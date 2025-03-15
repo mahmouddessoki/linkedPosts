@@ -1,0 +1,22 @@
+<div class="comment p-3 mb-3 rounded-3 ">
+  <div class="comment-header d-flex justify-content-between">
+    <div class="comment-bio d-flex gap-2 align-items-center">
+      <img src="/imgs/profile (1).png" class="align-self-start" alt="">
+      <div class="comment-userName d-flex align-items-center gap-3">
+        <h6 class="m-0 fw-medium">{{comment.commentCreator.name}}</h6>
+        <p class="m-0">{{comment.createdAt}}</p>
+      </div>
+    </div>
+    <div class="comment-setting">
+      <svg width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+        <path
+          d="M8 256a56 56 0 1 1 112 0A56 56 0 1 1 8 256zm160 0a56 56 0 1 1 112 0 56 56 0 1 1 -112 0zm216-56a56 56 0 1 1 0 112 56 56 0 1 1 0-112z" />
+      </svg>
+    </div>
+  </div>
+  <div class="comment-text ">
+    <p class="text-muted mt-3">
+      {{comment.content}}
+    </p>
+  </div>
+</div>

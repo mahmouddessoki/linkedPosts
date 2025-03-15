@@ -1,0 +1,132 @@
+<section class="min-vh-100 login py-5 flex-column bg-light d-flex justify-content-center align-items-center">
+  <h1 class="text-capitalize main-color mb-4">Linked Posts</h1>
+
+  <div class="container px-5 py-4 bg-white rounded-4 shadow">
+
+    <form [formGroup]="authForm" (ngSubmit)="register()" class="mb-2">
+      <h2 class="text-capitalize main-color mb-4 fs-2">Register now</h2>
+      <div class="mb-4">
+        @let nameControl = authForm.get('name')!;
+        <input appInputAlert [inputControl]="nameControl" type="text" formControlName="name" id="name"
+          class="form-control shadow-none  form-control-lg" placeholder="enter your name" required />
+        <app-validation-messages [control]="nameControl" />
+      </div>
+      <div class="mb-4 ">
+        @let emailControl = authForm.get('email')!;
+        <input type="email" appInputAlert [inputControl]="emailControl" formControlName="email" id="email"
+          class="form-control shadow-none  form-control-lg " placeholder="enter your email" required />
+        <app-validation-messages [control]="emailControl" />
+
+      </div>
+      <div class="mb-4 ">
+        @let passControl = authForm.get('password')!;
+        <input type="password" appInputAlert [inputControl]="passControl" formControlName="password" id="password"
+          class="form-control form-control-lg  shadow-none " required placeholder="enter your password" />
+        <app-validation-messages [control]="passControl" />
+
+      </div>
+      <div class="mb-4">
+        @let rePassControl = authForm.get('rePassword')!;
+        <input type="password" [class]="{
+                'is-invalid':authForm.getError('mismatch')&&(rePassControl.dirty),
+                'is-valid':(!authForm.getError('mismatch')&&(rePassControl.dirty)
+                 && (passControl.valid)),
+              }" formControlName="rePassword" id="repeat-password" class="form-control form-control-lg  shadow-none"
+          required placeholder="confirm your password" />
+        <app-validation-messages [control]="authForm" />
+
+      </div>
+       @let dateOfBirth = authForm.get('dateOfBirth')!;
+
+
+      <mat-form-field class="example-full-width w-100">
+        <!-- <mat-label class="text-capitalize">Choose your date of birth</mat-label> -->
+        <input matInput [matDatepicker]="picker" class="w-100" formControlName="dateOfBirth"
+          placeholder="Choose your Date of birth..(MM/DD/YYYY)">
+        <!-- <mat-hint class="">MM/DD/YYYY</mat-hint> -->
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #picker></mat-datepicker>
+      </mat-form-field>
+      <app-validation-messages [control]="dateOfBirth" />
+
+      <div class="mb-4 d-flex gap-3 mt-3">
+        <div class="form-check">
+          <input class="form-check-input" value="male" formControlName="gender" type="radio" name="gender"
+            id="flexRadioDefault1">
+          <label class="form-check-label" for="flexRadioDefault1">
+            Male
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" value="female" formControlName="gender" type="radio" name="gender"
+            id="flexRadioDefault2" checked>
+          <label class="form-check-label" for="flexRadioDefault2">
+            Female
+          </label>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+      <div class="d-flex justify-content-between">
+        <button [disabled]="authForm.invalid" [class]="{
+                'main-bg':authForm.valid,
+              }" type="submit" class="btn main-bg text-white d-flex align-items-center gap-2">
+
+          @if (isLoading) {
+          <span class="loader"></span>
+          }
+          Register
+
+
+
+        </button>
+
+        <div class="mt-2 text-capitalize">
+          already registered ? <a routerLink="/login" class="text-decoration-none main-color">login</a>
+        </div>
+      </div>
+    </form>
+
+    @if (resMsg) {
+    @if (resMsg == "success") {
+    <div class="alert alert-success text-center" role="alert">
+      {{resMsg}}
+    </div>
+    }@else {
+    <div class="alert alert-danger text-capitalize text-center" role="alert">
+      {{resMsg}} <br>
+    </div>
+    }
+    }
+  </div>
+
+
+
+
+
+</section>
+
+
+<!-- <div class="relative w-full mb-5">
+              <div class="absolute inset-y-0 pt-3 start-0 flex items-start ps-3.5 pointer-events-none">
+                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                </svg>
+              </div>
+              @let DOBControl = authForm.get('dateOfBirth')!;
+              <input datepicker appInputAlert [inputControl]="DOBControl" id="default-datepicker"
+                formControlName="dateOfBirth" type="text" class="app-input ps-10" placeholder="Select date">
+              <app-validation-messages [control]="DOBControl" />
+
+
+            </div> -->
