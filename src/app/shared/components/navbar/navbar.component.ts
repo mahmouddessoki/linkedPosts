@@ -14,9 +14,6 @@ import { Subscription } from 'rxjs';
 export class NavbarComponent {
   private readonly auth = inject(AuthService)
   private readonly router = inject(Router)
-  // isAuthorized: Signal<boolean> = computed(() => this.auth.isLoggedIn())
-  // isDropped: Signal<boolean> = computed(() => this.auth.isDropdown())
-  // layout: InputSignal<string> = input<string>('')
   userData: UserData = {} as UserData;
   isCollapsed = true;
   subscription=new Subscription()

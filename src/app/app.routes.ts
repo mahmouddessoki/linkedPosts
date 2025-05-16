@@ -5,6 +5,7 @@ import { RegisterComponent } from './features/Authentication/components/register
 import { UserComponent } from './core/layouts/user/user.component';
 import { authGuard } from './core/guards/auth.guard';
 import { TimelineComponent } from './features/timeline/components/timeline/timeline.component';
+import { ProfileComponent } from './features/profile/components/profile/profile.component';
 
 export const routes: Routes = [
 
@@ -22,7 +23,8 @@ export const routes: Routes = [
     path: '',
     component: UserComponent,
     children: [
-      {path:'timeline',component:TimelineComponent}
+      {path:'timeline',component:TimelineComponent},
+      {path:'profile',component:ProfileComponent},
 
     ]
   }

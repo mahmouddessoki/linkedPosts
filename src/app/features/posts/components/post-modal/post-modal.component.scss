@@ -1,0 +1,25 @@
+button[type="submit"]:hover {
+  background-color: #1d4ed8;
+
+}
+
+
+form {
+  label {
+    width: 100%;
+    cursor: pointer;
+    border:2px solid #EDEFF2;
+  }
+  label,textarea {
+    background-color: #F9FAFC;
+  }
+  textarea {
+    box-shadow:none;
+    &::placeholder {
+      text-transform: capitalize;
+    }
+  }
+
+
+  // font-size: 15px;
+}

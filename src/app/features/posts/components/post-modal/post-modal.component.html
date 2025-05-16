@@ -1,0 +1,61 @@
+<div class="modal-header">
+  <h4 class="modal-title">
+    @if (reason=="add") {
+    Add Post
+    }@else {
+    Update Post
+    }
+  </h4>
+  <button type="button" class="btn-close shadow-none" aria-label="Close" (click)="closeModal('exit')"></button>
+</div>
+<form (ngSubmit)="reason=='update'?updatePost():addPost()">
+  <div class="modal-body">
+    <div class="post-body mb-3">
+
+      <textarea [(ngModel)]="title" name="title" class="form-control" rows="5"
+        placeholder="write your thoughts here .. " value="{{title}}"></textarea>
+    </div>
+    <div class="post-img">
+      <label (dragover)="onDrag($event)" (drop)="onDrop($event)" (dragleave)="onDragLeave($event)" for="post-img"
+        class="p-3 py-5 d-flex flex-column rounded-2 gap-2 justify-content-center align-items-center">
+        <svg style="width: 80px;height:80px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="my-svg">
+          <path
+            d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128l-368 0zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39L296 392c0 13.3 10.7 24 24 24s24-10.7 24-24l0-134.1 39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z" />
+        </svg>
+
+
+
+        <div>
+          <p class="text-capitalize mb-0 text-center mb-3">
+            <span class="fw-bold">click to upload</span> or drag and drop
+          </p>
+          <p class="mb-0 text-center">
+            <span class="text-muted text-uppercase">jpg, png, jpeg,svg (max: 800*400px)</span>
+          </p>
+          <p class="mb-0 text-center">
+            {{selectedImg}}
+          </p>
+          @if (imageSelected) {
+
+          <div class="text-center">
+            <img [src]="imagePreview" width="100px" alt="Dropped Image" />
+
+          </div>
+          }
+        </div>
+      </label>
+      <input type="file" (change)="select($event)" hidden name="" id="post-img">
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="closeModal('exit')">Close</button>
+    <button type="submit" class="btn main-bg text-white">
+      @if (reason=="add") {
+      Post
+      }@else {
+      Update
+      }
+    </button>
+  </div>
+</form>

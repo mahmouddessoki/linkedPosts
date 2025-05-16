@@ -1,0 +1,38 @@
+<section id="profile" class="mt-4">
+  <div class="profile-header mb-5 position-relative">
+    <div class="profile-cover ">
+      <!-- <img src="/imgs/cover.jpg" class="w-100" alt="cover"> -->
+    </div>
+    <div>
+
+      <div
+        class="profile-photo position-absolute shadow  translate-middle-y  d-flex justify-content-center align-items-center">
+        <img [src]="userData.user.photo?userData.user.photo : '/imgs/profile (1).png'" alt="">
+      </div>
+      <h1 class="fs-3 text-center mt-3 text-capitalize">{{userData.user.name || "User"}}</h1>
+    </div>
+  </div>
+
+  <div class="user-posts mt-5 pt-5">
+    <div class="posts-header rounded-2 px-2 py-3">
+      <h2 class="mb-0  fs-4   text-muted">Posts</h2>
+    </div>
+    <div class="posts">
+      @for (post of userPosts; track post._id) {
+      <app-post-card
+      (onDeletePost)="deletePost($event)"
+      (onUpdatePost)="openModal('update',$event)"
+       [post]="post" />
+      }@empty {
+        @if (noPosts) {
+          <div class="alert mt-3 text-capitalize fs-3 alert-info text-center">
+            No Posts Founded For You
+          </div>
+        }@else {
+
+          <app-placeholder />
+        }
+      }
+    </div>
+  </div>
+</section>

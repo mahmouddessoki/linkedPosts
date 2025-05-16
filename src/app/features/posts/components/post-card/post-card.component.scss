@@ -1,5 +1,20 @@
+  @function pxToRem($numOfPx){
+    @return $numOfPx / 16;
+  }
+
   .post {
     img:not(.post-media img) {
       width: 40px;
+    }
+    a {
+      cursor: pointer;
+    }
+    .post-comments {
+      height: pxToRem(216)+rem;
+      overflow: auto;
+
+    }
+    .post-setting {
+      cursor: pointer;
     }
   }

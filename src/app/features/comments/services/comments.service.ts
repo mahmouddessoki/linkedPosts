@@ -26,4 +26,12 @@ export class CommentsService {
   deleteComment(commentId: string): Observable<any> {
     return this.http.delete(`${env.BASE_URL}comments/${commentId}`)
   }
+  addComment(postId: string,content:string): Observable<any> {
+    return this.http.post(`${env.BASE_URL}comments`,{
+      content,
+      post: postId
+    })
+  }
+
+
 }

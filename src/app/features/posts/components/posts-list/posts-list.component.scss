@@ -1,1 +1,41 @@
+section {
+  padding-top: 85px;
 
+}
+
+section .timeline {
+  max-width: 900px;
+  margin: auto;
+}
+
+section {
+  .timeline {
+    .timeline-header {
+      & {
+        border-radius: 20px
+      }
+
+      input {
+        & {
+          border-radius: 30px;
+          padding: 10px;
+        }
+
+        &::placeholder {
+          font-size: 17px;
+          text-transform: capitalize;
+        }
+
+
+      }
+
+
+    }
+
+    .form-control:focus {
+      border-color: var(--bs-border-color) !important;
+    }
+
+
+  }
+}

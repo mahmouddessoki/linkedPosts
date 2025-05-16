@@ -1,0 +1,33 @@
+<div class="modal-header">
+  <h4 class="modal-title">
+    @if (reason == "update") {
+
+      Update Comment
+    }@else {
+      Add Comment
+    }
+  </h4>
+  <button type="button" class="btn-close shadow-none" aria-label="Close" (click)="closeModal('exit')"></button>
+</div>
+<form (ngSubmit)="reason=='update'?UpdateComment():addComment()">
+  <div class="modal-body">
+    <div class="post-body mb-3">
+
+      <textarea [(ngModel)]="content" name="title" class="form-control shadow-none" rows="5"
+        placeholder="write your comment here .. " value="{{content}}"></textarea>
+    </div>
+
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="closeModal('exit')">Close</button>
+    <button type="submit"  class="btn main-bg text-white">
+      @if (reason == "update") {
+      Update
+      }@else {
+      Add
+      }
+    </button>
+  </div>
+</form>
+

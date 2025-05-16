@@ -9,6 +9,10 @@
     @if(control.getError("minlength")) {
     Name must be at least 3 characters
     }
+    @if(control.getError("unRealistic")) {
+      unRealistic Date
+    }
+    
     @if (control.getError("maxlength")) {
     Name must be maximum 20 characters
     }

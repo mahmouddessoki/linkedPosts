@@ -1,5 +1,31 @@
-<div class="posts">
-  @for (post of posts; track post._id) {
-  <app-post-card [post]="post" />
-  }
-</div>
+<section class="min-vh-100 bg-light">
+  <div class="timeline">
+    <div class="timeline-header bg-white py-5 px-4 rounded-3 ">
+      <input class="form-control shadow-none" type="text" (click)="openModal('add')"
+        placeholder="what is in your mind, {{userData.user?userData.user.name:'User'}} ?">
+    </div>
+    <div class="posts" infiniteScroll
+    [infiniteScrollDistance]="1"
+      (scrolled)="loadPosts()"  >
+      @for (post of posts; track post._id) {
+      <app-post-card [post]="post" (onUpdatePost)="openModal('update',$event)" (onDeletePost)="deletePost($event)" />
+      }@empty {
+      <app-placeholder />
+      }
+      @if (loading) {
+      <div class="loading text-center">
+        Loading more posts...
+      </div>
+      }
+
+      @if (allLoaded) {
+      <div class="end-message text-center text-capitalize p-3 fs-4">
+        🎉 You have reached the end.
+      </div>
+      }
+
+
+
+    </div>
+  </div>
+</section>

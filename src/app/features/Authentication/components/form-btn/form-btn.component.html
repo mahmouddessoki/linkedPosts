@@ -1,0 +1,7 @@
+<button [disabled]="!isValid()" type="submit"
+class="btn main-bg text-white d-flex align-items-center gap-2">
+  @if (isLoading()) {
+    <form-loader />
+  }
+  {{btnString()}}
+</button>

@@ -1,5 +1,5 @@
 <section class="vh-100 login flex-column bg-light d-flex justify-content-center align-items-center">
-      <h1 class="text-capitalize main-color mb-4">Linked Posts</h1>
+  <h1 class="text-capitalize main-color mb-4">Linked Posts</h1>
 
   <div class="container p-5 bg-white rounded-4 shadow">
 
@@ -8,15 +8,15 @@
 
       <div class="mb-4 ">
         @let emailControl = authForm.get('email')!;
-        <input type="email" appInputAlert [inputControl]="emailControl"
-        formControlName="email"
-        id="email" class="form-control shadow-none  form-control-lg " placeholder="enter your email" required />
+        <input type="email" appInputAlert [inputControl]="emailControl" formControlName="email" id="email"
+          class="form-control shadow-none  form-control-lg " placeholder="enter your email" required />
         <app-validation-messages [control]="emailControl" />
 
       </div>
       <div class="mb-4 ">
         @let passControl = authForm.get('password')!;
-        <input type="password" appInputAlert [inputControl]="passControl" formControlName="password" id="password" class="form-control form-control-lg  shadow-none " required placeholder="enter your password" />
+        <input type="password" appInputAlert [inputControl]="passControl" formControlName="password" id="password"
+          class="form-control form-control-lg  shadow-none " required placeholder="enter your password" />
         <app-validation-messages [control]="passControl" />
 
       </div>
@@ -29,19 +29,7 @@
 
 
       <div class="d-flex justify-content-between">
-        <button [disabled]="!authForm.valid" [class]="{
-                'main-bg':authForm.valid,
-              }" type="submit" class="btn main-bg text-white d-flex align-items-center gap-2">
-
-          @if (isLoading) {
-          <span class="loader"></span>
-          }
-          Login
-
-
-
-        </button>
-
+        <form-btn [btnString]="'Login'" [isLoading]="isLoading" [isValid]="authForm.valid" />
         <div class="mt-2 text-capitalize">
           not registered ? <a routerLink="/register" class="text-decoration-none main-color">create account</a>
         </div>
@@ -49,19 +37,7 @@
     </form>
 
     @if (resMsg) {
-    @if (resMsg == "success") {
-    <div class="alert alert-success text-center"
-      role="alert">
-      {{resMsg}}
-    </div>
-    }@else {
-    <div class="alert alert-danger text-capitalize text-center"
-      role="alert">
-      @for (err of resMsg; track $index) {
-        {{err}} <br>
-      }
-    </div>
-    }
+    <res-msg [resMsg]="resMsg" />
     }
   </div>
 

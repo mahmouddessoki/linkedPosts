@@ -5,13 +5,15 @@ import { AuthService } from '../../services/auth.service';
 import { ValidationMessagesComponent } from "../../../../shared/components/validation-messages/validation-messages.component";
 import { validators } from '../../helpers/validators';
 import { InputAlertDirective } from '../../../../shared/directives/input-alert.directive';
+import { FormBtnComponent } from "../form-btn/form-btn.component";
+import { ResMsgComponent } from "../res-msg/res-msg.component";
 
 @Component({
   selector: 'app-login',
   imports: [ValidationMessagesComponent,
     ReactiveFormsModule,
     InputAlertDirective,
-  RouterLink],
+    RouterLink, FormBtnComponent, ResMsgComponent],
 templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })

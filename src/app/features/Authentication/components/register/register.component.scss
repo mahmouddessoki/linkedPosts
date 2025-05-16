@@ -1,22 +1,17 @@
 form {
 
-  button {
-    &:hover {
-      background-color: #1d4ed8 !important;
-    }
 
-    &:disabled {
-      background-color: rgba(29, 78, 216, 0.4);
-    }
-
-  }
 
   input {
     &::placeholder {
       text-transform: capitalize;
       font-size: 15px;
+
     }
-    
+    .date {
+      font-size: 15px;
+    }
+
 
   }
 

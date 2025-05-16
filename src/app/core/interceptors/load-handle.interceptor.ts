@@ -5,8 +5,9 @@ import { finalize } from 'rxjs';
 
 export const loadHandleInterceptor: HttpInterceptorFn = (req, next) => {
   const spinner = inject(NgxSpinnerService)
-  spinner.show();
-
+  if(!req.url.includes("comments")) {
+    spinner.show();
+  }
   return next(req).pipe(finalize(() => {
     spinner.hide()
   }));

@@ -1,0 +1,9 @@
+@if (resMsg() == "success") {
+<div class="alert alert-success text-center" role="alert">
+  {{resMsg()}}
+</div>
+}@else {
+<div class="alert alert-danger text-capitalize text-center" role="alert">
+  {{resMsg()}} <br>
+</div>
+}

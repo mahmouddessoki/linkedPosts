@@ -12,3 +12,9 @@ export interface CommentCreator {
   name: string
   photo: string
 }
+
+
+export interface comment_ins {
+  content: string
+  post:string
+}

@@ -1,0 +1,10 @@
+  button {
+    &:hover {
+      background-color: #1d4ed8 !important;
+    }
+
+    &:disabled {
+      background-color: rgba(29, 78, 216, 0.4);
+    }
+
+  }

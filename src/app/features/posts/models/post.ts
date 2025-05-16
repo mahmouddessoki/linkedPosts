@@ -1,3 +1,5 @@
+import { File } from "buffer"
+
 export interface Post {
   _id: string
   body: string
@@ -26,4 +28,10 @@ export interface CommentCreator {
   _id: string
   name: string
   photo: string
+}
+
+
+export  interface postContent {
+  image: File,
+  body: string
 }

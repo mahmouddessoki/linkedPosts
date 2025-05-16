@@ -36,17 +36,11 @@
         <app-validation-messages [control]="authForm" />
 
       </div>
-       @let dateOfBirth = authForm.get('dateOfBirth')!;
+      @let dateOfBirth = authForm.get('dateOfBirth')!;
 
-
-      <mat-form-field class="example-full-width w-100">
-        <!-- <mat-label class="text-capitalize">Choose your date of birth</mat-label> -->
-        <input matInput [matDatepicker]="picker" class="w-100" formControlName="dateOfBirth"
-          placeholder="Choose your Date of birth..(MM/DD/YYYY)">
-        <!-- <mat-hint class="">MM/DD/YYYY</mat-hint> -->
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker touchUi #picker></mat-datepicker>
-      </mat-form-field>
+      <input type="date" appInputAlert [inputControl]="dateOfBirth"
+        class="form-control date text-muted form-control-lg  shadow-none"
+        placeholder="Choose your Date of birth..(MM/DD/YYYY)" name="dateOfBirth" formControlName="dateOfBirth" id="">
       <app-validation-messages [control]="dateOfBirth" />
 
       <div class="mb-4 d-flex gap-3 mt-3">
@@ -66,28 +60,9 @@
         </div>
       </div>
 
-
-
-
-
-
-
-
-
-
       <div class="d-flex justify-content-between">
-        <button [disabled]="authForm.invalid" [class]="{
-                'main-bg':authForm.valid,
-              }" type="submit" class="btn main-bg text-white d-flex align-items-center gap-2">
 
-          @if (isLoading) {
-          <span class="loader"></span>
-          }
-          Register
-
-
-
-        </button>
+        <form-btn [btnString]="'Register'" [isLoading]="isLoading" [isValid]="authForm.valid" />
 
         <div class="mt-2 text-capitalize">
           already registered ? <a routerLink="/login" class="text-decoration-none main-color">login</a>
@@ -96,15 +71,7 @@
     </form>
 
     @if (resMsg) {
-    @if (resMsg == "success") {
-    <div class="alert alert-success text-center" role="alert">
-      {{resMsg}}
-    </div>
-    }@else {
-    <div class="alert alert-danger text-capitalize text-center" role="alert">
-      {{resMsg}} <br>
-    </div>
-    }
+    <res-msg [resMsg]="resMsg" />
     }
   </div>
 

@@ -10,13 +10,15 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { provideNativeDateAdapter } from '@angular/material/core';
+import { FormBtnComponent } from "../form-btn/form-btn.component";
+import { ResMsgComponent } from "../res-msg/res-msg.component";
 @Component({
   selector: 'app-register',
   imports: [ReactiveFormsModule,
-     ValidationMessagesComponent,
-     InputAlertDirective,
+    ValidationMessagesComponent,
+    InputAlertDirective,
     RouterLink,
-    MatFormFieldModule, MatInputModule, MatDatepickerModule],
+    MatFormFieldModule, MatInputModule, MatDatepickerModule, FormBtnComponent, ResMsgComponent],
   providers: [provideNativeDateAdapter()],
 
   templateUrl: './register.component.html',
@@ -39,7 +41,7 @@ export class RegisterComponent {
       email: [null, validators.emailValidator],
       password:[null,validators.passwordValidate],
       rePassword: [null],
-      dateOfBirth: [null, Validators.required],
+      dateOfBirth: [null, validators.dateOfBirth],
       gender: [null, validators.genderValidator]
     }, { validators: [confirmPassword] })
 
@@ -47,8 +49,6 @@ export class RegisterComponent {
 
 
   register(){
-    console.log(this.authForm);
-    console.log(this.authForm.value);
     if(this.authForm.invalid || this.isLoading) {
       this.authForm.markAllAsTouched()
       this.authForm.get('password')!.setValue('')
@@ -67,7 +67,6 @@ export class RegisterComponent {
       },
       error:(err)=>{
         this.resMsg = err.error.error
-        console.log(err);
         this.isLoading = false
       }
     })
